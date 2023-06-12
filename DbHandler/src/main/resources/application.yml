@@ -1,0 +1,30 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/quickbuy?serverTimezone=GMT
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      aop-patterns: com.sf.oj.*
+      filters: stat,wall
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: admim
+        resetEnable: false
+      web-stat-filter:
+        enable: true
+        url-pattern: /*
+      filter:
+        stat:
+          logSlowSql: true
+          enable: true
+          slow-sql-millis: 1000
+        wall:
+          enable: true
+
+  jdbc:
+    template:
+      query-timeout: 3
